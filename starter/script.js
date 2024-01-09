@@ -88,24 +88,24 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-var passOptions = [
-  {
-    length: 0,
-    lower: false,
-    upper: false,
-    numeric: false,
-    specialChars: false,
-    duplicates: false,
+var passOptions =
+{
+  length: 0,
+  lower: false,
+  upper: false,
+  numeric: false,
+  specialChars: false,
+  duplicates: false,
 
-    checkPassOptions() {
-      if (!this.lower && !this.upper && !this.numeric && !this.specialChars) {
-        alert("Please select at least one character type option!");
-        return false;
-      }
-      return true;
+  checkPassOptions: function () {
+    if (!this.lower && !this.upper && !this.numeric && !this.specialChars) {
+      alert("Please select at least one character type option!");
+      return false;
     }
+    return true;
   }
-];
+};
+
 
 var pass = "";
 
@@ -117,12 +117,12 @@ function getPasswordOptions() {
   }
 
   do {
-    passOptions.lower          = prompt("Would you like to add lowercase characters Y/N?");
-    passOptions.upper          = prompt("Would you like to add uppercase characters Y/N?");
-    passOptions.numeric        = prompt("Would you like to add numeric characters Y/N?");
-    passOptions.specialChars   = prompt("Would you like to add special characters Y/N?");
-    passOptions.duplicates     = prompt("Would you like to allow duplicate characters Y/N?");
-  } while (!passOptions)
+    passOptions.lower         = confirm("Would you like to add lowercase characters?");
+    passOptions.upper         = confirm("Would you like to add uppercase characters Y/N?");
+    passOptions.numeric       = confirm("Would you like to add numeric characters Y/N?");
+    passOptions.specialChars  = confirm("Would you like to add special characters Y/N?");
+    passOptions.duplicates    = confirm("Would you like to allow duplicate characters Y/N?");
+  } while (!passOptions.checkPassOptions());
 
 }
 
@@ -142,12 +142,12 @@ function getRandom(arr) {
   }
 
   return arr[rnd];
-
 }
 
 // Function to generate password with user input
 function generatePassword() {
 
+  pass = "";
   passOptions.length = 0; // Reinitialise length of pass
   getPasswordOptions();
   
@@ -160,7 +160,7 @@ function generatePassword() {
 
     switch (arrayType) {
       case 0:
-        if(!passOptions.specialCharacters) {
+        if(!passOptions.specialChars) {
           i--;
           break;
         }
@@ -203,8 +203,6 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
   var password = generatePassword();  
   var passwordText = document.querySelector('#password');
-
-  passwordText.value = ""; // Reset password after generate pass pressed
   passwordText.value = password;
 }
 
