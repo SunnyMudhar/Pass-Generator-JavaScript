@@ -29,4 +29,4 @@ Designed primarily for a desktop experience, the site can be accessed on small s
 
 ### GitHub Pages:
 
-[GitHub Pages](https://sunielmudhar.github.io/Pass-Generator-JavaScript/)
+[GitHub Pages](https://sunielmudhar.github.io/Pass-Generator-JavaScript/starter/)
