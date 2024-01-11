@@ -138,7 +138,9 @@ function getRandom(arr) {
   var rnd = Math.floor(Math.random() * (arr.length));
 
   if (!passOptions.duplicates) {
-    return arr.pop(rnd);
+    var char = arr[rnd];
+    arr.splice(rnd, 1);
+    return char;
   }
 
   return arr[rnd];
